@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Imeth's Lively Wallpaper</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    body {
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      background: linear-gradient(270deg, #00c9ff, #92fe9d, #f77062, #fe5196);
+      background-size: 800% 800%;
+      animation: gradientMove 25s ease infinite;
+      color: white;
+      position: relative;
+    }
+
+    @keyframes gradientMove {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      z-index: 1;
+    }
+
+    .time {
+      font-size: 4em;
+      margin-bottom: 0.2em;
+    }
+
+    .greeting {
+      font-size: 2em;
+      margin-bottom: 1em;
+    }
+
+    .date {
+      font-size: 1.2em;
+      margin-bottom: 15px;
+    }
+
+    .search-bar {
+      width: 60%;
+      margin-bottom: 20px;
+    }
+
+    .search-bar input {
+      width: 100%;
+      padding: 12px 20px;
+      font-size: 1.1em;
+      border-radius: 25px;
+      border: none;
+      outline: none;
+    }
+
+    .google-links, .music-buttons {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 15px;
+    }
+
+    .google-links a, .music-buttons button {
+      text-decoration: none;
+      background: rgba(255, 255, 255, 0.2);
+      padding: 10px 18px;
+      border-radius: 25px;
+      color: white;
+      font-size: 1em;
+      backdrop-filter: blur(6px);
+      border: 1px solid rgba(255,255,255,0.2);
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .google-links a:hover, .music-buttons button:hover {
+      background: rgba(255, 255, 255, 0.35);
+      transform: scale(1.05);
+    }
+
+    .sidebar {
+      width: 300px;
+      background: rgba(0, 0, 0, 0.3);
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      border-top-left-radius: 20px;
+      border-bottom-left-radius: 20px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .sidebar .profile-container {
+  opacity: 1;
+  transform: none;
+  text-align: center;
+}
+
+
+    .sidebar img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 15px;
+      border: 3px solid white;
+    }
+
+    .about-me {
+      font-size: 1.1em;
+      text-align: center;
+      line-height: 1.5;
+    }
+
+    .weather {
+      margin-top: 20px;
+      z-index: 1;
+    }
+
+    /* Particle canvas */
+    #particle-canvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      pointer-events: none;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="particle-canvas"></canvas>
+
+  <div class="sidebar">
+    <div class="profile-container">
+      <img src="me.png" alt="Your Photo" />
+      <div class="about-me">
+        <p><strong>Imeth Wimalaweera</strong></p>
+        <p>Hi! I'm a 13-year-old student at <strong>Ananda College</strong>.</p>
+        <p>I’m passionate about coding and love creating cool things with technology.</p>
+        <p>Outside of coding, I enjoy pizza 🍕 and orange juice 🍊.</p>
+        <p>Fun fact: My birthday is on <strong>June 21st</strong>! 🎉</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="content">
+    <div class="time" id="clock">00:00:00</div>
+    <div class="greeting" id="greeting">Good day, Imeth!</div>
+    <div class="date" id="date"></div>
+
+    <div class="search-bar">
+  <input type="text" id="search-input" placeholder="Search Google..." />
+</div>
+
+
+
+    <div class="google-links">
+  <a href="#" onclick="openExternal('https://drive.google.com')">📁 Drive</a>
+  <a href="#" onclick="openExternal('https://bard.google.com')">🤖 Bard</a>
+  <a href="#" onclick="openExternal('https://mail.google.com')">📧 Gmail</a>
+  <a href="#" onclick="openExternal('https://www.youtube.com')">📺 YouTube</a>
+  <a href="#" onclick="openExternal('https://photos.google.com')">📷 Photos</a>
+</div>
+
+
+    <div class="music-buttons">
+      <button onclick="playMusic()">🎵 Play</button>
+      <button onclick="pauseMusic()">⏸️ Pause</button>
+    </div>
+
+ <div class="weather" id="weather">
+  <div style="padding: 10px 20px; background: rgba(255, 255, 255, 0.2); border-radius: 15px; backdrop-filter: blur(5px); max-width: 250px; margin-top: 20px; font-size: 1em;">
+    <p id="weather-location">📍 Colombo</p>
+    <p id="weather-temp">Loading...</p>
+    <p id="weather-desc"></p>
+    <p id="weather-humidity"></p>
+    <p id="weather-wind"></p>
+  </div>
+</div>
+
+
+  <audio id="bg-music" loop>
+    <source src="Count-On-Me.mp3" type="audio/mpeg" />
+  </audio>
+
+  <script>
+    function updateClockAndGreeting() {
+      const clock = document.getElementById('clock');
+      const greeting = document.getElementById('greeting');
+      const date = document.getElementById('date');
+      const now = new Date();
+      const hours = now.getHours();
+      const minutes = String(now.getMinutes()).padStart(2, '0');
+      const seconds = String(now.getSeconds()).padStart(2, '0');
+      clock.textContent = `${hours}:${minutes}:${seconds}`;
+
+      let greetText = "Hello, Imeth!";
+      if (hours >= 5 && hours < 12) greetText = "Good morning, Imeth 👋";
+      else if (hours >= 12 && hours < 17) greetText = "Good afternoon, Imeth ☀️";
+      else if (hours >= 17 && hours < 21) greetText = "Good evening, Imeth 🌇";
+      else greetText = "Good night, Imeth 🌙";
+      greeting.textContent = greetText;
+
+      const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+      date.textContent = now.toLocaleDateString(undefined, options);
+    }
+
+    function playMusic() {
+      document.getElementById('bg-music').play();
+    }
+
+    function pauseMusic() {
+      document.getElementById('bg-music').pause();
+    }
+
+    // Particle canvas animation
+    function createParticles() {
+      const canvas = document.getElementById("particle-canvas");
+      const ctx = canvas.getContext("2d");
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+
+      const particles = [];
+      const colors = ["#ffffff", "#ffeeee", "#ccffff"];
+
+      for (let i = 0; i < 80; i++) {
+        particles.push({
+          x: Math.random() * canvas.width,
+          y: Math.random() * canvas.height,
+          radius: Math.random() * 2 + 1,
+          dx: (Math.random() - 0.5) * 0.5,
+          dy: (Math.random() - 0.5) * 0.5,
+          color: colors[Math.floor(Math.random() * colors.length)],
+        });
+      }
+
+      function animate() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        particles.forEach(p => {
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+          ctx.fillStyle = p.color;
+          ctx.fill();
+          p.x += p.dx;
+          p.y += p.dy;
+
+          if (p.x < 0 || p.x > canvas.width) p.dx *= -1;
+          if (p.y < 0 || p.y > canvas.height) p.dy *= -1;
+        });
+        requestAnimationFrame(animate);
+      }
+
+      animate();
+    }
+
+    window.onload = function () {
+      updateClockAndGreeting();
+      setInterval(updateClockAndGreeting, 1000);
+      createParticles();
+    };
+  </script>
+
+  <script>
+    
+          if (!d.getElementById(id)) {
+        js = d.createElement(s);
+        js.id = id;
+        js.src = "https://weatherwidget.io/js/widget.min.js";
+        fjs.parentNode.insertBefore(js, fjs);
+      }
+    (document, "script", "weatherwidget-io-js");
+    
+  </script>
+ <script>
+  const input = document.getElementById("search-input");
+  input.addEventListener("keydown", function (event) {
+    if (event.key === "Enter") {
+      const query = encodeURIComponent(input.value.trim());
+      if (query) {
+        // Trick to open in external browser via anchor injection
+        const link = document.createElement("a");
+        link.href = "https://www.google.com/search?q=" + query;
+        link.target = "_blank";
+        link.rel = "noopener noreferrer";
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+      }
+    }
+  });
+</script>
+
+
+
+</body>
+</html>
+<script>
+  function openExternal(url) {
+    const link = document.createElement("a");
+    link.href = url;
+    link.target = "_blank";
+    link.rel = "noopener noreferrer";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  }
+</script>
+
+
+
