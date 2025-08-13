@@ -6,173 +6,173 @@
   <title>Imeth's Lively Wallpaper</title>
   <style>
     * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Segoe UI', sans-serif;
-}
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', sans-serif;
+    }
 
-body {
-  height: 100vh;
-  overflow: hidden;
-  display: flex;
-  background: linear-gradient(270deg, #00c9ff, #92fe9d, #f77062, #fe5196);
-  background-size: 800% 800%;
-  animation: gradientMove 25s ease infinite;
-  color: white;
-  position: relative;
-}
+    body {
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      background: linear-gradient(270deg, #00c9ff, #92fe9d, #f77062, #fe5196);
+      background-size: 800% 800%;
+      animation: gradientMove 25s ease infinite;
+      color: white;
+      position: relative;
+    }
 
-@keyframes gradientMove {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
+    @keyframes gradientMove {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
 
-.content {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start; /* Align content from the top */
-  text-align: center;
-  z-index: 1;
-  max-height: 85vh; /* Limit content height to avoid overflow */
-  overflow-y: auto; /* Make content scrollable if needed */
-  padding-bottom: 20px; /* Add some space at the bottom */
-}
+    .content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      text-align: center;
+      z-index: 1;
+      overflow-y: auto; 
+      padding-bottom: 20px;
+      padding-top: 20px;
+      max-height: 75vh;
+    }
 
-.time {
-  font-size: 4em;
-  margin-bottom: 0.2em;
-}
+    .time {
+      font-size: 4em;
+      margin-bottom: 0.2em;
+    }
 
-.greeting {
-  font-size: 2em;
-  margin-bottom: 1em;
-}
+    .greeting {
+      font-size: 2em;
+      margin-bottom: 1em;
+    }
 
-.date {
-  font-size: 1.2em;
-  margin-bottom: 15px;
-}
+    .date {
+      font-size: 1.2em;
+      margin-bottom: 15px;
+    }
 
-.search-bar {
-  width: 60%;
-  margin-bottom: 20px;
-}
+    .search-bar {
+      width: 60%;
+      margin-bottom: 20px;
+    }
 
-.search-bar input {
-  width: 100%;
-  padding: 12px 20px;
-  font-size: 1.1em;
-  border-radius: 25px;
-  border: none;
-  outline: none;
-}
+    .search-bar input {
+      width: 100%;
+      padding: 12px 20px;
+      font-size: 1.1em;
+      border-radius: 25px;
+      border: none;
+      outline: none;
+    }
 
-.google-links, .music-buttons {
-  display: flex;
-  gap: 12px;
-  flex-wrap: wrap;
-  justify-content: center;
-  margin-top: 15px;
-}
+    .google-links, .music-buttons {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 15px;
+    }
 
-.google-links a, .music-buttons button {
-  text-decoration: none;
-  background: rgba(255, 255, 255, 0.2);
-  padding: 10px 18px;
-  border-radius: 25px;
-  color: white;
-  font-size: 1em;
-  backdrop-filter: blur(6px);
-  border: 1px solid rgba(255,255,255,0.2);
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
+    .google-links a, .music-buttons button {
+      text-decoration: none;
+      background: rgba(255, 255, 255, 0.2);
+      padding: 10px 18px;
+      border-radius: 25px;
+      color: white;
+      font-size: 1em;
+      backdrop-filter: blur(6px);
+      border: 1px solid rgba(255,255,255,0.2);
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
 
-.google-links a:hover, .music-buttons button:hover {
-  background: rgba(255, 255, 255, 0.35);
-  transform: scale(1.05);
-}
+    .google-links a:hover, .music-buttons button:hover {
+      background: rgba(255, 255, 255, 0.35);
+      transform: scale(1.05);
+    }
 
-.sidebar {
-  width: 300px;
-  background: rgba(0, 0, 0, 0.3);
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  border-top-left-radius: 20px;
-  border-bottom-left-radius: 20px;
-  position: relative;
-  z-index: 2;
-}
+    .sidebar {
+      width: 300px;
+      background: rgba(0, 0, 0, 0.3);
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      border-top-left-radius: 20px;
+      border-bottom-left-radius: 20px;
+      position: relative;
+      z-index: 2;
+    }
 
-.sidebar .profile-container {
-  opacity: 1;
-  transform: none;
-  text-align: center;
-}
+    .sidebar .profile-container {
+      opacity: 1;
+      transform: none;
+      text-align: center;
+    }
 
-.sidebar img {
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
-  object-fit: cover;
-  margin-bottom: 15px;
-  border: 3px solid white;
-}
+    .sidebar img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 15px;
+      border: 3px solid white;
+    }
 
-.about-me {
-  font-size: 1.1em;
-  text-align: center;
-  line-height: 1.5;
-}
+    .about-me {
+      font-size: 1.1em;
+      text-align: center;
+      line-height: 1.5;
+    }
 
-.weather {
-  margin-top: 20px;
-  z-index: 1;
-}
+    .weather {
+      margin-top: 20px;
+      z-index: 1;
+    }
 
-/* Particle canvas */
-#particle-canvas {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 0;
-  pointer-events: none;
-}
+    /* Particle canvas */
+    #particle-canvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      pointer-events: none;
+    }
 
-/* New section for Projects */
-.projects {
-  margin-top: 20px;
-  text-align: center;
-  max-height: 400px; /* Limit height for projects */
-  overflow-y: auto; /* Make it scrollable if the content exceeds */
-}
+    /* New section for Projects */
+    .projects {
+      margin-top: 20px;
+      text-align: center;
+      max-height: 400px; /* Limit height for projects */
+      overflow-y: auto; /* Make it scrollable if the content exceeds */
+    }
 
-.projects a {
-  display: block;
-  color: white;
-  font-size: 1.1em;
-  text-decoration: none;
-  padding: 10px;
-  background: rgba(255, 255, 255, 0.2);
-  margin-bottom: 10px;
-  border-radius: 25px;
-  transition: all 0.3s ease;
-}
+    .projects a {
+      display: block;
+      color: white;
+      font-size: 1.1em;
+      text-decoration: none;
+      padding: 10px;
+      background: rgba(255, 255, 255, 0.2);
+      margin-bottom: 10px;
+      border-radius: 25px;
+      transition: all 0.3s ease;
+    }
 
-.projects a:hover {
-  background: rgba(255, 255, 255, 0.35);
-  transform: scale(1.05);
-}
-
+    .projects a:hover {
+      background: rgba(255, 255, 255, 0.35);
+      transform: scale(1.05);
+    }
   </style>
 </head>
 <body>
@@ -257,53 +257,32 @@ body {
       link.click();
       document.body.removeChild(link);
     }
-  </script>
 
-  <!-- Particle canvas animation -->
-  <script>
-    function createParticles() {
-      const canvas = document.getElementById("particle-canvas");
-      const ctx = canvas.getContext("2d");
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
+    function updateClockAndGreeting() {
+      const clock = document.getElementById('clock');
+      const greeting = document.getElementById('greeting');
+      const date = document.getElementById('date');
+      const now = new Date();
+      const hours = now.getHours();
+      const minutes = String(now.getMinutes()).padStart(2, '0');
+      const seconds = String(now.getSeconds()).padStart(2, '0');
+      clock.textContent = `${hours}:${minutes}:${seconds}`;
 
-      const particles = [];
-      const colors = ["#ffffff", "#ffeeee", "#ccffff"];
+      let greetText = "Hello, Imeth!";
+      if (hours >= 5 && hours < 12) greetText = "Good morning, Imeth 👋";
+      else if (hours >= 12 && hours < 17) greetText = "Good afternoon, Imeth ☀️";
+      else if (hours >= 17 && hours < 21) greetText = "Good evening, Imeth 🌇";
+      else greetText = "Good night, Imeth 🌙";
+      greeting.textContent = greetText;
 
-      for (let i = 0; i < 80; i++) {
-        particles.push({
-          x: Math.random() * canvas.width,
-          y: Math.random() * canvas.height,
-          radius: Math.random() * 2 + 1,
-          dx: (Math.random() - 0.5) * 0.5,
-          dy: (Math.random() - 0.5) * 0.5,
-          color: colors[Math.floor(Math.random() * colors.length)],
-        });
-      }
-
-      function animate() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        particles.forEach(p => {
-          ctx.beginPath();
-          ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-          ctx.fillStyle = p.color;
-          ctx.fill();
-          p.x += p.dx;
-          p.y += p.dy;
-
-          if (p.x < 0 || p.x > canvas.width) p.dx *= -1;
-          if (p.y < 0 || p.y > canvas.height) p.dy *= -1;
-        });
-        requestAnimationFrame(animate);
-      }
-
-      animate();
+      const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+      date.textContent = now.toLocaleDateString(undefined, options);
     }
 
     window.onload = function () {
-      createParticles();
+      updateClockAndGreeting();
+      setInterval(updateClockAndGreeting, 1000);
     };
   </script>
 </body>
 </html>
-
