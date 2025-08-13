@@ -145,6 +145,29 @@
       z-index: 0;
       pointer-events: none;
     }
+
+    /* New section for Projects */
+    .projects {
+      margin-top: 20px;
+      text-align: center;
+    }
+
+    .projects a {
+      display: block;
+      color: white;
+      font-size: 1.1em;
+      text-decoration: none;
+      padding: 10px;
+      background: rgba(255, 255, 255, 0.2);
+      margin-bottom: 10px;
+      border-radius: 25px;
+      transition: all 0.3s ease;
+    }
+
+    .projects a:hover {
+      background: rgba(255, 255, 255, 0.35);
+      transform: scale(1.05);
+    }
   </style>
 </head>
 <body>
@@ -169,71 +192,70 @@
     <div class="date" id="date"></div>
 
     <div class="search-bar">
-  <input type="text" id="search-input" placeholder="Search Google..." />
-</div>
-
-
+      <input type="text" id="search-input" placeholder="Search Google..." />
+    </div>
 
     <div class="google-links">
-  <a href="#" onclick="openExternal('https://drive.google.com')">📁 Drive</a>
-  <a href="#" onclick="openExternal('https://bard.google.com')">🤖 Bard</a>
-  <a href="#" onclick="openExternal('https://mail.google.com')">📧 Gmail</a>
-  <a href="#" onclick="openExternal('https://www.youtube.com')">📺 YouTube</a>
-  <a href="#" onclick="openExternal('https://photos.google.com')">📷 Photos</a>
-</div>
-
+      <a href="#" onclick="openExternal('https://drive.google.com')">📁 Drive</a>
+      <a href="#" onclick="openExternal('https://bard.google.com')">🤖 Bard</a>
+      <a href="#" onclick="openExternal('https://mail.google.com')">📧 Gmail</a>
+      <a href="#" onclick="openExternal('https://www.youtube.com')">📺 YouTube</a>
+      <a href="#" onclick="openExternal('https://photos.google.com')">📷 Photos</a>
+    </div>
 
     <div class="music-buttons">
       <button onclick="playMusic()">🎵 Play</button>
       <button onclick="pauseMusic()">⏸️ Pause</button>
     </div>
 
- <div class="weather" id="weather">
-  <div style="padding: 10px 20px; background: rgba(255, 255, 255, 0.2); border-radius: 15px; backdrop-filter: blur(5px); max-width: 250px; margin-top: 20px; font-size: 1em;">
-    <p id="weather-location">📍 Colombo</p>
-    <p id="weather-temp">Loading...</p>
-    <p id="weather-desc"></p>
-    <p id="weather-humidity"></p>
-    <p id="weather-wind"></p>
-  </div>
-</div>
+    <!-- New Projects Section -->
+    <div class="projects">
+      <h2>My Projects</h2>
+      <a href="https://imeth-anandacollege.github.io/snakes-ladders/" target="_blank">🎮 Snakes & Ladders</a>
+      <a href="https://imeth-anandacollege.github.io/BMI-calculator/" target="_blank">📐 BMI Calculator</a>
+      <a href="https://imeth-anandacollege.github.io/weather-checker/" target="_blank">🌦 Weather Checker</a>
+      <a href="https://imeth-anandacollege.github.io/palindrome-checker/" target="_blank">🔤 Palindrome Checker</a>
+      <a href="https://imeth-anandacollege.github.io/color-picker-tool/" target="_blank">🎨 Color Picker Tool</a>
+      <a href="https://imeth-anandacollege.github.io/Basic-calculator/" target="_blank">🧮 Basic Calculator</a>
+      <a href="https://imeth-anandacollege.github.io/random-quote-generator/" target="_blank">💬 Random Quote Generator</a>
+      <a href="https://imeth-anandacollege.github.io/typing-speed-tester/" target="_blank">⌨️ Typing Speed Tester</a>
+      <a href="https://imeth-anandacollege.github.io/rock-paper-scissors-game/" target="_blank">✊✋✌️ Rock Paper Scissors</a>
+      <a href="https://imeth-anandacollege.github.io/vowel-counter/" target="_blank">🔤 Vowel Counter</a>
+      <a href="https://imeth-anandacollege.github.io/todo-list/" target="_blank">📝 To-Do List</a>
+      <a href="https://imeth-anandacollege.github.io/digital-clock/" target="_blank">🕒 Digital Clock</a>
+      <a href="https://imeth-anandacollege.github.io/temperature-converter/" target="_blank">🌡 Temperature Converter</a>
+      <a href="https://imeth-anandacollege.github.io/Calender/" target="_blank">📅 Calendar</a>
+    </div>
 
+    <div class="weather" id="weather">
+      <div style="padding: 10px 20px; background: rgba(255, 255, 255, 0.2); border-radius: 15px; backdrop-filter: blur(5px); max-width: 250px; margin-top: 20px; font-size: 1em;">
+        <p id="weather-location">📍 Colombo</p>
+        <p id="weather-temp">Loading...</p>
+        <p id="weather-desc"></p>
+        <p id="weather-humidity"></p>
+        <p id="weather-wind"></p>
+      </div>
+    </div>
+  </div>
 
   <audio id="bg-music" loop>
     <source src="Count-On-Me.mp3" type="audio/mpeg" />
   </audio>
 
   <script>
-    function updateClockAndGreeting() {
-      const clock = document.getElementById('clock');
-      const greeting = document.getElementById('greeting');
-      const date = document.getElementById('date');
-      const now = new Date();
-      const hours = now.getHours();
-      const minutes = String(now.getMinutes()).padStart(2, '0');
-      const seconds = String(now.getSeconds()).padStart(2, '0');
-      clock.textContent = `${hours}:${minutes}:${seconds}`;
-
-      let greetText = "Hello, Imeth!";
-      if (hours >= 5 && hours < 12) greetText = "Good morning, Imeth 👋";
-      else if (hours >= 12 && hours < 17) greetText = "Good afternoon, Imeth ☀️";
-      else if (hours >= 17 && hours < 21) greetText = "Good evening, Imeth 🌇";
-      else greetText = "Good night, Imeth 🌙";
-      greeting.textContent = greetText;
-
-      const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-      date.textContent = now.toLocaleDateString(undefined, options);
+    function openExternal(url) {
+      const link = document.createElement("a");
+      link.href = url;
+      link.target = "_blank";
+      link.rel = "noopener noreferrer";
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
     }
+  </script>
 
-    function playMusic() {
-      document.getElementById('bg-music').play();
-    }
-
-    function pauseMusic() {
-      document.getElementById('bg-music').pause();
-    }
-
-    // Particle canvas animation
+  <!-- Particle canvas animation -->
+  <script>
     function createParticles() {
       const canvas = document.getElementById("particle-canvas");
       const ctx = canvas.getContext("2d");
@@ -274,57 +296,8 @@
     }
 
     window.onload = function () {
-      updateClockAndGreeting();
-      setInterval(updateClockAndGreeting, 1000);
       createParticles();
     };
   </script>
-
-  <script>
-    
-          if (!d.getElementById(id)) {
-        js = d.createElement(s);
-        js.id = id;
-        js.src = "https://weatherwidget.io/js/widget.min.js";
-        fjs.parentNode.insertBefore(js, fjs);
-      }
-    (document, "script", "weatherwidget-io-js");
-    
-  </script>
- <script>
-  const input = document.getElementById("search-input");
-  input.addEventListener("keydown", function (event) {
-    if (event.key === "Enter") {
-      const query = encodeURIComponent(input.value.trim());
-      if (query) {
-        // Trick to open in external browser via anchor injection
-        const link = document.createElement("a");
-        link.href = "https://www.google.com/search?q=" + query;
-        link.target = "_blank";
-        link.rel = "noopener noreferrer";
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-      }
-    }
-  });
-</script>
-
-
-
 </body>
 </html>
-<script>
-  function openExternal(url) {
-    const link = document.createElement("a");
-    link.href = url;
-    link.target = "_blank";
-    link.rel = "noopener noreferrer";
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-  }
-</script>
-
-
-
